@@ -10,7 +10,7 @@ import UIKit
 import OAuthSwift
 
 class YelpClient: OAuthSwiftClient {
-    
+    // Yelp Search API: https://www.yelp.com/developers/documentation/v2/search_api
     static let yelpConsumerKey = "vxKwwcR_NMQ7WaEiQBK_CA"
     static let yelpConsumerSecret = "33QCvh5bIF5jIHR5klQr7RtBDhQ"
     static let yelpToken = "uRcRswHFYa1VkDrGV6LAW2F8clGh5JHV"

@@ -12,23 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let params: [String: String] = [
-            "location": "San+Francisco",
-            "term": "seafood"
-        ]
         
-        let yelpClient = YelpClient.sharedInstance
-        yelpClient.get("http://api.yelp.com/v2/search", parameters: params, success: { (data, response) -> Void in
-            guard let responseDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
-                print("Response cannot be parsed as JSONObject.")
-                return
-            }
-            print(responseDictionary)
-        }) { (error) -> Void in
-            print("there was an error: \(error)")
-        }
-        
+        Business.searchWithTerm(term: "food", location: "San+Francisco", sort: .bestMatched, completion: { (businesses, NSError) -> Void in
+            print("zhao: \(businesses.count)")
+        })
     }
     
 }
