@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol BusinessViewControllerDelegate {
     @objc optional func businessViewController(businessViewController: BusinessViewController, loadMoreData: Bool)
+    func businessViewController(businessViewController: BusinessViewController, didSelect business: Business)
 }
 
 class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
@@ -43,6 +44,7 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.register(UINib(nibName: self.businessCell, bundle: nil), forCellReuseIdentifier: self.businessCell)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
+        self.tableView.keyboardDismissMode = .onDrag
         
         // Set up Infinite Scroll loading indicator
         let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
@@ -74,6 +76,14 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.nameLabel.text = "\(indexPath.row + 1). \(business!.name!)"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? BusinessCell {
+            self.delegate?.businessViewController(businessViewController: self, didSelect: cell.business)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -13,6 +13,8 @@
 		3A2941151DB875B600944B8C /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2941141DB875B600944B8C /* Categories.json */; };
 		3A2941191DB8770400944B8C /* YelpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2941181DB8770400944B8C /* YelpHelpers.swift */; };
 		3A3280881DBC136D00A63E4C /* YAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3280871DBC136D00A63E4C /* YAnnotationView.swift */; };
+		3A3280901DBEA1F400A63E4C /* BusinessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A32808F1DBEA1F400A63E4C /* BusinessDetailViewController.swift */; };
+		3A3280931DBEAD9300A63E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3280911DBEAD9300A63E4C /* Main.storyboard */; };
 		3A47A7921DBB0CF5006803D9 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7911DBB0CF5006803D9 /* InfiniteScrollActivityView.swift */; };
 		3A47A7B81DBB2DF2006803D9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7B71DBB2DF2006803D9 /* SearchViewController.swift */; };
 		3A47A7BA1DBB3024006803D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7B91DBB3024006803D9 /* MapViewController.swift */; };
@@ -24,7 +26,6 @@
 		3ABF00A31DB9B2B000BF96C3 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF00A21DB9B2B000BF96C3 /* Filter.swift */; };
 		3AE659A01DB5BDF000863B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6599F1DB5BDF000863B3A /* AppDelegate.swift */; };
 		3AE659A21DB5BDF000863B3A /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */; };
-		3AE659A51DB5BDF000863B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE659A31DB5BDF000863B3A /* Main.storyboard */; };
 		3AE659A71DB5BDF000863B3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE659A61DB5BDF000863B3A /* Assets.xcassets */; };
 		3AE659AA1DB5BDF000863B3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE659A81DB5BDF000863B3A /* LaunchScreen.storyboard */; };
 		3AE659B51DB5BDF000863B3A /* YelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE659B41DB5BDF000863B3A /* YelpTests.swift */; };
@@ -61,6 +62,8 @@
 		3A2941141DB875B600944B8C /* Categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
 		3A2941181DB8770400944B8C /* YelpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpHelpers.swift; sourceTree = "<group>"; };
 		3A3280871DBC136D00A63E4C /* YAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAnnotationView.swift; sourceTree = "<group>"; };
+		3A32808F1DBEA1F400A63E4C /* BusinessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailViewController.swift; sourceTree = "<group>"; };
+		3A3280921DBEAD9300A63E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A47A7911DBB0CF5006803D9 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		3A47A7B71DBB2DF2006803D9 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3A47A7B91DBB3024006803D9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +76,6 @@
 		3AE6599C1DB5BDF000863B3A /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE6599F1DB5BDF000863B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
-		3AE659A41DB5BDF000863B3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AE659A61DB5BDF000863B3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE659A91DB5BDF000863B3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AE659AB1DB5BDF000863B3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,10 +179,10 @@
 				3AE65AA61DB723E900863B3A /* Controllers */,
 				3AE659CF1DB5CA8A00863B3A /* Services */,
 				3AE6599F1DB5BDF000863B3A /* AppDelegate.swift */,
-				3AE659A31DB5BDF000863B3A /* Main.storyboard */,
 				3AE659A61DB5BDF000863B3A /* Assets.xcassets */,
 				3AE659A81DB5BDF000863B3A /* LaunchScreen.storyboard */,
 				3AE659AB1DB5BDF000863B3A /* Info.plist */,
+				3A3280911DBEAD9300A63E4C /* Main.storyboard */,
 				3A2941141DB875B600944B8C /* Categories.json */,
 			);
 			path = Yelp;
@@ -245,6 +247,7 @@
 				3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */,
 				3A47A7B91DBB3024006803D9 /* MapViewController.swift */,
 				3A29410A1DB868DE00944B8C /* FiltersViewController.swift */,
+				3A32808F1DBEA1F400A63E4C /* BusinessDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -365,8 +368,8 @@
 				3AE659AA1DB5BDF000863B3A /* LaunchScreen.storyboard in Resources */,
 				3AE65AA41DB723D200863B3A /* BusinessCell.xib in Resources */,
 				3AE659A71DB5BDF000863B3A /* Assets.xcassets in Resources */,
+				3A3280931DBEAD9300A63E4C /* Main.storyboard in Resources */,
 				3A2941151DB875B600944B8C /* Categories.json in Resources */,
-				3AE659A51DB5BDF000863B3A /* Main.storyboard in Resources */,
 				3A2941131DB8724D00944B8C /* SwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +454,7 @@
 				3A29410B1DB868DE00944B8C /* FiltersViewController.swift in Sources */,
 				3AE659D31DB5D58700863B3A /* YelpSortMode.swift in Sources */,
 				3AE659CE1DB5C2BC00863B3A /* YelpClient.swift in Sources */,
+				3A3280901DBEA1F400A63E4C /* BusinessDetailViewController.swift in Sources */,
 				3A2941191DB8770400944B8C /* YelpHelpers.swift in Sources */,
 				3A47A7921DBB0CF5006803D9 /* InfiniteScrollActivityView.swift in Sources */,
 				3AE659A01DB5BDF000863B3A /* AppDelegate.swift in Sources */,
@@ -494,10 +498,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3AE659A31DB5BDF000863B3A /* Main.storyboard */ = {
+		3A3280911DBEAD9300A63E4C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3AE659A41DB5BDF000863B3A /* Base */,
+				3A3280921DBEAD9300A63E4C /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

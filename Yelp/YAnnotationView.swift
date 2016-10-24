@@ -16,7 +16,14 @@ class YAnnotationView: MKAnnotationView {
     var stackView: UIStackView!
     var imageView: UIImageView!
     var label: UILabel!
-    var isOpen: Bool!
+    var isOpen: Bool = false {
+        didSet {
+            print("isOpent: \(self.isOpen)")
+            self.imageView.image = UIImage(named: self.isOpen ? "annotation_background_white" : "annotation_background_red")
+            self.label.textColor = self.isOpen ? UIColor.black : UIColor.white
+            self.setNeedsDisplay()
+        }
+    }
     
     var index: Int = 0 {
         didSet {
@@ -29,7 +36,6 @@ class YAnnotationView: MKAnnotationView {
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        self.canShowCallout = true
         self.isOpen = false
         self.imageView = UIImageView(image: UIImage(named:"annotation_background_red"))
         self.imageView.frame = CGRect(x: 0, y: 0, width: self.width, height: self.height)
@@ -54,13 +60,5 @@ class YAnnotationView: MKAnnotationView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

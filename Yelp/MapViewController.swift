@@ -9,12 +9,15 @@
 import UIKit
 import MapKit
 
+@objc protocol MapViewControllerDelegate {
+    func mapViewController(mapViewController: MapViewController, didSelect business: Business)
+    func mapViewController(mapViewController: MapViewController, regionDidChangeAnimated animated: Bool)
+}
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     static let TAG = NSStringFromClass(MapViewController.self)
     
     @IBOutlet var mapView: MKMapView!
-    
-    let metersPerMile: Double = 1609.344
     
     var businesses: [Business] = [] {
         didSet {
@@ -25,6 +28,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var annotations: [MKAnnotation] = []
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation?
+    var selectedfBusiness: Business?
+    weak var delegate: MapViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +48,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func invalidateViews() {
-        self.annotations.removeAll()
-        for i in 0..<self.businesses.count {
-            let business = self.businesses[i]
-            let newAnnotation = YAnnotation(business: business, index: i + 1)
-            self.annotations.append(newAnnotation)
-        }
-        
         if (self.viewIfLoaded != nil) {
+            self.mapView.removeAnnotations(self.annotations)
+            self.annotations.removeAll()
+            
+            for i in 0..<self.businesses.count {
+                let business = self.businesses[i]
+                let newAnnotation = YAnnotation(business: business, index: i + 1)
+                self.annotations.append(newAnnotation)
+            }
+        
+            
             self.mapView.addAnnotations(annotations)
         }
     }
@@ -69,13 +77,39 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotationView = YAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
         annotationView.index = yAnnotation.index
         
+        let rightCalloutButton = UIButton(type: .detailDisclosure)
+        annotationView.rightCalloutAccessoryView = rightCalloutButton
+        rightCalloutButton.addTarget(self, action: #selector(MapViewController.rightCalloutButtonAction(_:)), for: .touchUpInside)
+        annotationView.canShowCallout = true
+        
         return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("didSelect")
+    func rightCalloutButtonAction(_ sender: AnyObject?) {
+        self.delegate?.mapViewController(mapViewController: self, didSelect: self.selectedfBusiness!)
     }
-
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotationView = view as? YAnnotationView else {
+            return
+        }
+        
+        self.selectedfBusiness = self.businesses[annotationView.index - 1]
+        annotationView.isOpen = true
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        guard let annotationView = view as? YAnnotationView else {
+            return
+        }
+        
+        annotationView.isOpen = false
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        self.delegate?.mapViewController(mapViewController: self, regionDidChangeAnimated: true)
+    }
+    
     // MARK - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {

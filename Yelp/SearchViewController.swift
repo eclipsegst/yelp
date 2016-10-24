@@ -9,12 +9,14 @@
 import UIKit
 import MapKit
 
-class SearchViewController: UIViewController, FiltersViewControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, BusinessViewControllerDelegate, CLLocationManagerDelegate {
+class SearchViewController: UIViewController, FiltersViewControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate, BusinessViewControllerDelegate, MapViewControllerDelegate, CLLocationManagerDelegate {
     
     static let TAG = NSStringFromClass(SearchViewController.self)
 
     @IBOutlet var containerView: UIView!
     @IBOutlet var rightBarButtonItem: UIBarButtonItem!
+    
+    let businessDetailViewControllerSegueId = "BusinessDetailViewControllerSegueId"
     
     var businessViewController: BusinessViewController!
     var mapViewController: MapViewController!
@@ -53,6 +55,8 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
         }
     }
     
+    var business: Business?
+    
     var searchController: UISearchController!
     var rightBarButton: UIButton!
     
@@ -63,6 +67,7 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
         self.businessViewController = mainStoryBoard.instantiateViewController(withIdentifier: "BusinessViewController") as! BusinessViewController
         self.businessViewController.delegate = self
         self.mapViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        self.mapViewController.delegate = self
         
         self.businessViewController.view.frame = CGRect(x: 0, y: 0, width: self.containerView.frame.size.width, height: self.containerView.frame.size.height);
         self.containerView.addSubview(businessViewController.view)
@@ -72,7 +77,6 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
         self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.sizeToFit()
         self.searchController.searchBar.showsCancelButton = false
         definesPresentationContext = true
         self.searchController.hidesNavigationBarDuringPresentation = false
@@ -132,9 +136,16 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let filtersViewController = navigationController.topViewController as! FiltersViewController
-        filtersViewController.delegate = self
+        if let navigationController = segue.destination as? UINavigationController {
+            if let filtersViewController = navigationController.topViewController as? FiltersViewController {
+                filtersViewController.delegate = self
+            }
+        }
+        
+        if let detailViewController = segue.destination as? BusinessDetailViewController {
+            detailViewController.business = self.business
+        }
+        
     }
     
     // MARK: - FiltersViewControllerDelegate
@@ -169,8 +180,14 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
         self.searchController.searchBar.showsCancelButton = false
     }
     
+    // MARK: - BusinessViewControllerDelegate
     func businessViewController(businessViewController: BusinessViewController, loadMoreData: Bool) {
         loadMoreBusinesses()
+    }
+    
+    func businessViewController(businessViewController: BusinessViewController, didSelect business: Business) {
+//        self.business = business
+//        performSegue(withIdentifier: self.businessDetailViewControllerSegueId, sender: self)
     }
     
     func reloadBusinesses() {
@@ -190,6 +207,16 @@ class SearchViewController: UIViewController, FiltersViewControllerDelegate, UIS
         })
     }
     
+    // MARK: - MapViewControllerDelegate
+    func mapViewController(mapViewController: MapViewController, didSelect business: Business) {
+        self.business = business
+        performSegue(withIdentifier: self.businessDetailViewControllerSegueId, sender: self)
+    }
+    
+    func mapViewController(mapViewController: MapViewController, regionDidChangeAnimated animated: Bool) {
+        self.searchController.searchBar.resignFirstResponder()
+    }
+
     // MARK - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse {

@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="905.3973013493254"/>
+            <point key="canvasLocation" x="2036" y="905.3973013493254"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="JYC-Cd-hYp">
@@ -63,9 +63,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aa6-0j-RkO">
-                                <color key="backgroundColor" red="0.97254901959999995" green="0.51764705879999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aa6-0j-RkO"/>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -78,13 +76,14 @@
                     <navigationItem key="navigationItem" id="pau-0n-XLL">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="EBN-y4-qLy">
                             <connections>
-                                <segue destination="deE-wT-Dlg" kind="presentation" id="bFE-AY-WnP"/>
+                                <segue destination="deE-wT-Dlg" kind="show" id="bFE-AY-WnP"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="fw5-ta-PBq"/>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="Aa6-0j-RkO" id="MVx-dh-aGa"/>
+                        <segue destination="SJF-fO-gQ8" kind="show" identifier="BusinessDetailViewControllerSegueId" id="NYb-Aa-evp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkG-1d-fcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,7 +118,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyf-Z8-ZXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1918" y="907"/>
+            <point key="canvasLocation" x="2856.8000000000002" y="906.29685157421295"/>
+        </scene>
+        <!--Business Detail View Controller-->
+        <scene sceneID="iQm-Nu-myV">
+            <objects>
+                <viewController id="SJF-fO-gQ8" customClass="BusinessDetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wLQ-8t-7sx"/>
+                        <viewControllerLayoutGuide type="bottom" id="DGd-Ru-6Gb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bBG-cQ-Ree">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7yy-tJ-b2c"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkQ-43-fcl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1097" y="870"/>
         </scene>
         <!--Filters-->
         <scene sceneID="LnE-GW-XB8">

@@ -1,8 +1,8 @@
 # Project 2 - *Yelp*
 
-**Name of your app** is a Yelp search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
+**Yelp** is a search app using the [Yelp API](http://www.yelp.com/developers/documentation/v2/search_api).
 
-Time spent: **18** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
    - [X] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
    - [X] The filters table should be organized into sections as in the mock.
    - [X] You can use the default UISwitch for on/off states.
-   - [X] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+   - [X] Clicking on the "Search" button should dismiss the filters page and trigger the search the new filter settings.
    - [X] Display some of the available Yelp categories (choose any 3-4 that you want).
 
 The following **optional** features are implemented:
@@ -45,6 +45,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Libraries and tools used
 - [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) - Swift based OAuth library for iOS
 - [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
@@ -55,11 +56,13 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-None
+I'm very interested in how the navigation in search page in real Yelp app works. So I spent a little bit more time on this part. I use a container view to hold two sub-controllers, BusinessViewController and MapViewController.
+
+Also I use custom MKAnnotation and MKAnnotationView to make the mark in map behave like the real Yelp app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2016 Zhaolong Zhong
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
