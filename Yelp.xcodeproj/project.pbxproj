@@ -12,6 +12,16 @@
 		3A2941131DB8724D00944B8C /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A2941111DB8724D00944B8C /* SwitchCell.xib */; };
 		3A2941151DB875B600944B8C /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A2941141DB875B600944B8C /* Categories.json */; };
 		3A2941191DB8770400944B8C /* YelpHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2941181DB8770400944B8C /* YelpHelpers.swift */; };
+		3A3280881DBC136D00A63E4C /* YAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3280871DBC136D00A63E4C /* YAnnotationView.swift */; };
+		3A47A7921DBB0CF5006803D9 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7911DBB0CF5006803D9 /* InfiniteScrollActivityView.swift */; };
+		3A47A7B81DBB2DF2006803D9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7B71DBB2DF2006803D9 /* SearchViewController.swift */; };
+		3A47A7BA1DBB3024006803D9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7B91DBB3024006803D9 /* MapViewController.swift */; };
+		3A47A7BE1DBB5179006803D9 /* YLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7BD1DBB5179006803D9 /* YLocation.swift */; };
+		3A47A7C01DBB5949006803D9 /* YAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A47A7BF1DBB5949006803D9 /* YAnnotation.swift */; };
+		3ABF009C1DB9ABDF00BF96C3 /* YelpFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF009B1DB9ABDF00BF96C3 /* YelpFilters.swift */; };
+		3ABF009E1DB9B18D00BF96C3 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF009D1DB9B18D00BF96C3 /* Option.swift */; };
+		3ABF00A11DB9B26400BF96C3 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF00A01DB9B26400BF96C3 /* FilterType.swift */; };
+		3ABF00A31DB9B2B000BF96C3 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF00A21DB9B2B000BF96C3 /* Filter.swift */; };
 		3AE659A01DB5BDF000863B3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6599F1DB5BDF000863B3A /* AppDelegate.swift */; };
 		3AE659A21DB5BDF000863B3A /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */; };
 		3AE659A51DB5BDF000863B3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE659A31DB5BDF000863B3A /* Main.storyboard */; };
@@ -50,6 +60,16 @@
 		3A2941111DB8724D00944B8C /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		3A2941141DB875B600944B8C /* Categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
 		3A2941181DB8770400944B8C /* YelpHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpHelpers.swift; sourceTree = "<group>"; };
+		3A3280871DBC136D00A63E4C /* YAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAnnotationView.swift; sourceTree = "<group>"; };
+		3A47A7911DBB0CF5006803D9 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		3A47A7B71DBB2DF2006803D9 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		3A47A7B91DBB3024006803D9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3A47A7BD1DBB5179006803D9 /* YLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YLocation.swift; sourceTree = "<group>"; };
+		3A47A7BF1DBB5949006803D9 /* YAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YAnnotation.swift; sourceTree = "<group>"; };
+		3ABF009B1DB9ABDF00BF96C3 /* YelpFilters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpFilters.swift; sourceTree = "<group>"; };
+		3ABF009D1DB9B18D00BF96C3 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		3ABF00A01DB9B26400BF96C3 /* FilterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		3ABF00A21DB9B2B000BF96C3 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		3AE6599C1DB5BDF000863B3A /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE6599F1DB5BDF000863B3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +136,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3ABF009F1DB9B25300BF96C3 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				3ABF009B1DB9ABDF00BF96C3 /* YelpFilters.swift */,
+				3ABF009D1DB9B18D00BF96C3 /* Option.swift */,
+				3ABF00A01DB9B26400BF96C3 /* FilterType.swift */,
+				3ABF00A21DB9B2B000BF96C3 /* Filter.swift */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
 		3AE659931DB5BDF000863B3A = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +210,7 @@
 				3AE659CD1DB5C2BC00863B3A /* YelpClient.swift */,
 				3AE659D21DB5D58700863B3A /* YelpSortMode.swift */,
 				3A2941181DB8770400944B8C /* YelpHelpers.swift */,
+				3ABF009F1DB9B25300BF96C3 /* Filter */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -187,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				3AE659D01DB5CCDB00863B3A /* Business.swift */,
+				3A47A7BD1DBB5179006803D9 /* YLocation.swift */,
+				3A47A7BF1DBB5949006803D9 /* YAnnotation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -198,6 +232,8 @@
 				3AE65AA21DB723D200863B3A /* BusinessCell.xib */,
 				3A2941101DB8724D00944B8C /* SwitchCell.swift */,
 				3A2941111DB8724D00944B8C /* SwitchCell.xib */,
+				3A47A7911DBB0CF5006803D9 /* InfiniteScrollActivityView.swift */,
+				3A3280871DBC136D00A63E4C /* YAnnotationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -205,7 +241,9 @@
 		3AE65AA61DB723E900863B3A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A47A7B71DBB2DF2006803D9 /* SearchViewController.swift */,
 				3AE659A11DB5BDF000863B3A /* BusinessViewController.swift */,
+				3A47A7B91DBB3024006803D9 /* MapViewController.swift */,
 				3A29410A1DB868DE00944B8C /* FiltersViewController.swift */,
 			);
 			name = Controllers;
@@ -282,7 +320,7 @@
 				TargetAttributes = {
 					3AE6599B1DB5BDF000863B3A = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = Z6DQ796RKP;
+						DevelopmentTeam = 64P44K9544;
 						ProvisioningStyle = Automatic;
 					};
 					3AE659AF1DB5BDF000863B3A = {
@@ -402,15 +440,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A47A7B81DBB2DF2006803D9 /* SearchViewController.swift in Sources */,
 				3AE659A21DB5BDF000863B3A /* BusinessViewController.swift in Sources */,
 				3AE659D11DB5CCDB00863B3A /* Business.swift in Sources */,
 				3A2941121DB8724D00944B8C /* SwitchCell.swift in Sources */,
+				3A47A7C01DBB5949006803D9 /* YAnnotation.swift in Sources */,
+				3A3280881DBC136D00A63E4C /* YAnnotationView.swift in Sources */,
+				3ABF009E1DB9B18D00BF96C3 /* Option.swift in Sources */,
+				3A47A7BE1DBB5179006803D9 /* YLocation.swift in Sources */,
 				3A29410B1DB868DE00944B8C /* FiltersViewController.swift in Sources */,
 				3AE659D31DB5D58700863B3A /* YelpSortMode.swift in Sources */,
 				3AE659CE1DB5C2BC00863B3A /* YelpClient.swift in Sources */,
 				3A2941191DB8770400944B8C /* YelpHelpers.swift in Sources */,
+				3A47A7921DBB0CF5006803D9 /* InfiniteScrollActivityView.swift in Sources */,
 				3AE659A01DB5BDF000863B3A /* AppDelegate.swift in Sources */,
 				3AE65AA31DB723D200863B3A /* BusinessCell.swift in Sources */,
+				3ABF00A31DB9B2B000BF96C3 /* Filter.swift in Sources */,
+				3ABF009C1DB9ABDF00BF96C3 /* YelpFilters.swift in Sources */,
+				3ABF00A11DB9B26400BF96C3 /* FilterType.swift in Sources */,
+				3A47A7BA1DBB3024006803D9 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +614,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z6DQ796RKP;
+				DEVELOPMENT_TEAM = 64P44K9544;
 				INFOPLIST_FILE = Yelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -582,7 +630,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Z6DQ796RKP;
+				DEVELOPMENT_TEAM = 64P44K9544;
 				INFOPLIST_FILE = Yelp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

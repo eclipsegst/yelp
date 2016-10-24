@@ -23,6 +23,10 @@ class SwitchCell: UITableViewCell {
         super.awakeFromNib()
         
         self.onSwitch.addTarget(self, action: #selector(SwitchCell.switchValueChanged), for: .valueChanged)
+        
+        switchLabel.isHidden = true
+        onSwitch.isHidden = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

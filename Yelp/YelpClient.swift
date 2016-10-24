@@ -26,9 +26,13 @@ class YelpClient: OAuthSwiftClient {
     }
     
     func searchWithTerm(_ term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, completion: @escaping ([Business]?, Error?) -> Void) {
+        return searchWithTerm(term, sort: sort, categories: categories, deals: deals, offset: 0, completion: completion)
+    }
+    
+    func searchWithTerm(_ term: String, sort: YelpSortMode?, categories: [String]?, deals: Bool?, offset: Int?, completion: @escaping ([Business]?, Error?) -> Void) {
         
-        // Default the location to San Francisco
-        var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "37.785771,-122.406165" as AnyObject]
+        let defaultLocation = YLocation.getDefaultLocation().coordinate
+        var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "\(defaultLocation.latitude),\(defaultLocation.longitude)" as AnyObject]
         
         if sort != nil {
             parameters["sort"] = sort!.rawValue as AnyObject?
@@ -42,6 +46,10 @@ class YelpClient: OAuthSwiftClient {
             parameters["deals_filter"] = deals! as AnyObject?
         }
         
+        if let offset = offset {
+            parameters["offset"] = offset as AnyObject?
+        }
+        
         print(parameters)
         
         self.get(YelpClient.searchBaseURL, parameters: parameters, success: { (data, response) -> Void in
@@ -51,6 +59,55 @@ class YelpClient: OAuthSwiftClient {
             }
             
             let dictionaries = response["businesses"] as? [NSDictionary]
+            print(dictionaries?.first)
+            if dictionaries != nil {
+                completion(Business.businesses(array: dictionaries!), nil)
+            }
+        }) { (error) -> Void in
+            print("there was an error: \(error)")
+        }
+    }
+    
+    func searchWithTerm(_ term: String, filters: [Filter], offset: Int?, completion: @escaping ([Business]?, Error?) -> Void) {
+        
+        let defaultLocation = YLocation.getDefaultLocation().coordinate
+        var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "\(defaultLocation.latitude),\(defaultLocation.longitude)" as AnyObject]
+        
+        for filter in filters {
+            switch filter.name {
+            case "sort":
+                parameters["sort"] = filter.selectedOptions.first!.value! as AnyObject
+                break
+            case "popular_filter":
+                for option in filter.selectedOptions {
+                    if (option.name?.contains("deal"))! {
+                        parameters["deals_filter"] = 1 as AnyObject
+                    }
+                }
+                break
+            case "category_filter":
+                let categories:[String] = filter.selectedOptions.map{ $0.value! }
+                parameters["category_filter"] = categories.joined(separator: ",") as AnyObject?
+                break
+            default:
+                break
+            }
+        }
+        
+        if let offset = offset {
+            parameters["offset"] = offset as AnyObject?
+        }
+        
+        print(parameters)
+        
+        self.get(YelpClient.searchBaseURL, parameters: parameters, success: { (data, response) -> Void in
+            guard let response = try! JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary else {
+                print("Response cannot be parsed as JSONObject.")
+                return
+            }
+            
+            let dictionaries = response["businesses"] as? [NSDictionary]
+            print(dictionaries?.first)
             if dictionaries != nil {
                 completion(Business.businesses(array: dictionaries!), nil)
             }

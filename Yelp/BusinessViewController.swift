@@ -8,31 +8,31 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate {
+@objc protocol BusinessViewControllerDelegate {
+    @objc optional func businessViewController(businessViewController: BusinessViewController, loadMoreData: Bool)
+}
+
+class BusinessViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+    static let TAG = NSStringFromClass(BusinessViewController.self)
 
     @IBOutlet var tableView: UITableView!
     
     let businessCell = "BusinessCell"
-    
-    var searchText: String = "" {
-        didSet {
-            print("search text: \(self.searchText)")
-            if self.searchText == oldValue {
-                return
-            }
-            
-            Business.searchWithTerm(term: self.searchText, location: "San+Francisco", sort: .bestMatched, completion: { (businesses: [Business]?, error: Error?) -> Void in
-                self.businesses = businesses
-            })
-        }
-    }
+    var loadingMoreView:InfiniteScrollActivityView?
+    var isMoreDataLoading = false
     var businesses: [Business]? {
         didSet {
-            print("business count:\(self.businesses?.count)")
-            invalidateViews()
+            self.invalidateViews()
+            // Update flag
+            self.isMoreDataLoading = false
+            
+            // Stop the loading indicator
+            self.loadingMoreView!.stopAnimating()
         }
     }
-    var searchController: UISearchController!
+    
+    var searchText = ""
+    weak var delegate: BusinessViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,22 +44,15 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 120
         
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.searchController.delegate = self
-        self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.sizeToFit()
-        self.searchController.searchBar.showsCancelButton = false
-        definesPresentationContext = true
-        self.searchController.hidesNavigationBarDuringPresentation = false
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        self.loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        self.loadingMoreView!.isHidden = true
+        self.tableView.addSubview(loadingMoreView!)
         
-
-        self.navigationItem.titleView = self.searchController.searchBar
-        
-        Business.searchWithTerm(term: "food", location: "San+Francisco", sort: .bestMatched, completion: { (businesses: [Business]?, error: Error?) -> Void in
-            self.businesses = businesses
-        })
+        var insets = tableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
     }
     
     func invalidateViews() {
@@ -76,50 +69,33 @@ class BusinessViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.businessCell, for: indexPath) as! BusinessCell
         
-        let business = self.businesses![indexPath.row]
+        let business = self.businesses?[indexPath.row]
         cell.business = business
-        cell.nameLabel.text = "\(indexPath.row + 1). \(business.name!)"
+        cell.nameLabel.text = "\(indexPath.row + 1). \(business!.name!)"
         
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let filtersViewController = navigationController.topViewController as! FiltersViewController
-        filtersViewController.delegate = self
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+
+                // Load more results
+                self.delegate?.businessViewController!(businessViewController: self, loadMoreData: true)
+            }
+        }
     }
 
-    // MARK: - FiltersViewControllerDelegate
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
-        
-        let categories = filters["categories"] as? [String]
-        print(categories?.count)
-        
-        Business.searchWithTerm(term: "Restaurant", sort: nil, categories: categories, deals: nil, completion: { (businesses: [Business]?, error: Error?) -> Void in
-            self.businesses = businesses
-        })
-    }
-    
-    // MARK: - UISearchBar Delegate
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        print("search button clicked")
-        self.searchText = searchBar.text ?? ""
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("cancel button clicked")
-        
-    }
-    
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-//        self.searchText = searchController.searchBar.text!
-    }
-    
-    func didPresentSearchController(_ searchController: UISearchController) {
-        self.searchController.searchBar.showsCancelButton = false
-    }
-    
 }
 

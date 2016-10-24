@@ -38,11 +38,7 @@ class BusinessCell: UITableViewCell {
             if let imageURL = self.business.imageURL {
                 let resource = ImageResource(downloadURL: imageURL, cacheKey: "\(imageURL)")
                 self.businessImageView.kf.setImage(with: resource, placeholder: UIImage(named:"placeholder"), options: [.transition(.fade(0.2))])
-                self.businessImageView.layer.cornerRadius = 4
-                self.businessImageView.layer.masksToBounds = true
-                self.businessImageView.clipsToBounds = true
             }
-            
             
             let ratingResource = ImageResource(downloadURL: self.business.ratingImageURL!, cacheKey: "\(self.business.ratingImageURL)")
             self.ratingImageView.kf.setImage(with: ratingResource, options: [.transition(.fade(0.2))])
@@ -62,16 +58,16 @@ class BusinessCell: UITableViewCell {
     
     func initViews() {
         layoutMargins = .zero
-        backgroundColor = UIColor.clear
         selectedBackgroundView = UIView(frame: frame)
         selectedBackgroundView?.backgroundColor = UIColor(red: 0.5, green: 0.7, blue: 0.9, alpha: 0.8)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.separatorHeightConstraint.constant = 0.5
+        self.businessImageView.layer.cornerRadius = 4
+        self.businessImageView.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
